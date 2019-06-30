@@ -26,10 +26,7 @@ public class StudentEntity {
     @Column(name="GPA")
     private double GPA;
 
-    @ManyToMany()
-    @JoinColumn(name = "instructorId", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
+    @ManyToMany(mappedBy = "students")
     private Set<InstructorEntity> instructors;
 
 

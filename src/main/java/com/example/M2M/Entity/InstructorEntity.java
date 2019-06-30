@@ -24,10 +24,12 @@ public class InstructorEntity {
     @Column(name="phoneNumber")
     private int phoneNumber;
 
-    @ManyToMany()
-    @JoinColumn(name = "studentId", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
+
+
+
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable
     private Set<StudentEntity> students;
 
 }
