@@ -7,6 +7,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -26,8 +27,9 @@ public class StudentEntity {
     @Column(name="GPA")
     private double GPA;
 
-    @ManyToMany(mappedBy = "students")
-    private Set<InstructorEntity> instructors;
+    @ManyToMany()
+    @JsonIgnore
+    private Set<InstructorEntity> instructors= new HashSet<>();
 
 
 

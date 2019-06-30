@@ -45,7 +45,7 @@ public class InstructorController {
     }
 
     @PostMapping
-    public InstructorEntity createInstructor(InstructorEntity Instructor) {
+    public InstructorEntity createInstructor(@Valid @RequestBody InstructorEntity Instructor) {
         return instructorRepository.save(Instructor);
     }
 
@@ -92,6 +92,7 @@ public class InstructorController {
         return this.instructorRepository.findById(id).map((instructor) -> {
             instructor.getStudents().add(student);
             return this.instructorRepository.save(instructor).getStudents();
+
         }).orElseThrow(() -> new ResourceNotFoundException("Instructor not found "));
     }
 }
